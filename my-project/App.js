@@ -11,15 +11,6 @@ export default function App() {
     {name: 'Four', key: 4},
     {name: 'Five', key: 5},
     {name: 'Six', key: 6},
-    {name: 'Seven', key: 7},
-    {name: 'Eight', key: 8},
-    {name: 'Nine', key: 9},
-    {name: 'Ten', key: 10},
-    {name: 'Eleven', key: 11},
-    {name: 'Twelve', key: 12},
-    {name: 'Thirteen', key: 13},
-    {name: 'Fourteen', key: 14},
-    {name: 'Fifteen', key: 15},
   ])
 
   const apertarBotao = (key) => {
@@ -34,19 +25,28 @@ export default function App() {
     <View style={styles.container}>
       <Text style={styles.titleText}>Add Gateway</Text>
       <FlatList 
-        numColumns={3}
+        numColumns={2}
         keyExtractor={(item) => item.key}
         data={count}
         renderItem={({item}) => (
-          <Text style={styles.item}>{item.name}</Text>
+          <Text style={styles.item}></Text>
         )}
         style={styles.flatListContainer}
         columnWrapperStyle={{
           flex: 1,
-          alignItems: 'center',
+          alignItems: 'stretch',
           alignSelf: 'center',
-          backgroundColor: 'silver',
+          backgroundColor: 'white',
         }}
+      />
+      <FlatList 
+        numColumns={1}
+        keyExtractor={(item) => item.key}
+        data={count}
+        renderItem={({item}) => (
+          <Text style={styles.item}></Text>
+        )}
+        style={styles.flatListContainer}
       />
     </View>
     
@@ -66,15 +66,17 @@ const styles = StyleSheet.create({
   flatListContainer:{
     backgroundColor: 'silver',
     width: '100%',
-    height: '100%',
+    alignSelf: 'center',
+    backgroundColor: 'white',
   },
   item: {
     margin: 5,
-    width: 125,
+    width: '100%',
     height: 150,
     textAlign: 'center',
     textAlignVertical: 'center',
-    backgroundColor: 'blue',
+    alignSelf: 'center',
+    backgroundColor: 'silver',
     fontSize: 18,
     fontWeight: 'bold',
     color: 'white',
