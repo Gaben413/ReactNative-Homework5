@@ -28,16 +28,20 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>Add Gateway</Text>
-      <FlatList 
-        numColumns={2}
-        keyExtractor={(item) => item.key}
-        data={count}
-        renderItem={({item}) => (
-          <Text style={styles.item}>{item.name}</Text>
+      <ScrollView>
+        {count.map(
+          (item) => {
+            return(
+              <TouchableOpacity
+                onPress={() => apertarBotao(item.key)}
+                key={item.key}
+              >
+                <Text style={styles.item}>{item.name}</Text>
+              </TouchableOpacity>
+            )
+          }
         )}
-        style={styles.flatListContainer}
-        columnWrapperStyle={{alignItems: 'stretch'}}
-      />
+      </ScrollView>
     </View>
     
   );
@@ -53,17 +57,18 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   flatListContainer:{
-    backgroundColor: 'silver',
+    backgroundColor: 'white',
   },
   item: {
-    marginTop: 24,
-    marginRight: 30,
-    padding: 40,
-    paddingLeft: 85,
-    paddingRight: 85,
-    backgroundColor: 'magenta',
+    width: '95%',
+    height: 125,
+    margin:5,
+    alignSelf: 'center',
+    backgroundColor: 'red',
     fontSize: 24,
     fontWeight: 'bold',
-    alignItems: 'stretch',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    color: 'white',
   },
 });
